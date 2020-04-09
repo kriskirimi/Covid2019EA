@@ -9,7 +9,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from cycler import cycler
-df = pd.read_csv(r'C:\Users\KIRIMI\.spyder-py3\My Projects\Covid 19\Data\time_series_covid19_confirmed_global.csv')
+df = pd.read_csv(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Data\time_series_covid19_confirmed_global.csv')
 df.dtypes
 East_Africa = (['Kenya', 'Tanzania', 'Uganda', 'Rwanda', 'Burundi', 'Ethiopia', 
                 'South Sudan', 'Somalia'])
@@ -18,6 +18,8 @@ df.drop(['Province/State', 'Lat', 'Long'], axis=1, inplace=True)
 df.set_index('Country/Region', inplace=True, drop=True)
 df = df.T
 df=df.loc[(df.sum(axis=1)!=0)]
+len(df.columns)
+len(df.columns)
 len(df.columns)
 df=df.reset_index()
 df=df.rename(columns={'index':'Dates'})
@@ -54,8 +56,8 @@ ax.set_xticklabels(labels= df['Dates'].iloc[:], rotation=90, fontsize=8)
 
 ax.spines['top'].set_color('none')
 ax.spines['right'].set_color('none')
-ax.spines['left'].set_color('#000000')
-ax.spines['bottom'].set_color('#000000')
+ax.spines['left'].set_color('#9a9591')
+ax.spines['bottom'].set_color('#9a9591')
 
 ax.legend(labels=['Kenya', 'Uganda', 'Rwanda','Tanzania', 'Somalia', 
                   'South Sudan', 'Ethiopia', 

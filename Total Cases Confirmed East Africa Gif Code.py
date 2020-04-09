@@ -9,19 +9,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from matplotlib.animation import ImageMagickWriter
-df = pd.read_csv(r'C:\Users\KIRIMI\.spyder-py3\My Projects\Covid 19\Data\time_series_covid19_confirmed_global.csv')
+df = pd.read_csv(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Data\time_series_covid19_confirmed_global.csv')
 df.dtypes
 East_Africa = (['Kenya', 'Tanzania', 'Uganda', 'Rwanda', 'Burundi', 'Ethiopia', 
                 'South Sudan', 'Somalia'])
 df = df[df['Country/Region'].str.contains(format('|'.join(East_Africa)))]
 df.reset_index(inplace=True, drop=True)
 
-
 df.drop(['Province/State', 'Lat', 'Long'], axis=1, inplace=True)
 
 df.set_index('Country/Region', inplace=True, drop=True)
 df = df.T
-#df.reset_index(inplace=True)
 df=df.loc[(df.sum(axis=1)!=0)]
 df.reset_index(inplace=True)
 fig, ax = plt.subplots(figsize=(11,7))
@@ -48,6 +46,7 @@ ax.legend(labels=['Ethiopia', 'Kenya', 'Rwanda', 'Somalia', 'Tanzania', 'Uganda'
        'Burundi', 'South Sudan'], loc='upper left')
 ax.set(xlabel='Dates', ylabel='Code:https://github.com/kriskirimi/Covid2019EA\n\nNo of Confirmed Cases', title='East Africa COVID-19 Confirmed Cases')
 plt.style.use('seaborn-whitegrid')
+
 def animate(i):
     line1.set_data(x[:i],y1[:i])
     line2.set_data(x[:i],y2[:i])
@@ -61,5 +60,5 @@ def animate(i):
 
 ani = FuncAnimation(fig, animate, frames=len(x), interval=400)
 writer = ImageMagickWriter(fps = 20)
-ani.save(r'C:\Users\KIRIMI\.spyder-py3\My Projects\Covid 19\Covid19.gif', writer='imagemagick')
+ani.save(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Covid19.gif', writer='imagemagick')
 plt.show()
