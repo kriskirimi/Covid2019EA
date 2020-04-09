@@ -32,7 +32,6 @@ mpl.rcParams['axes.prop_cycle'] = (cycler(color=['#e41a1c',
            
 mpl.rcParams['axes.labelsize'] = 10
 mpl.rcParams['axes.titlesize'] = 15
-mpl.font_manager.FontProperties(family='fantasy')
 
 fig, ax = plt.subplots(figsize=(11,7))
 x = df['Dates']
