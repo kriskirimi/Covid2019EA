@@ -32,21 +32,31 @@ y5= df['Burundi']
 y6= df['South Sudan']
 y7= df['Somalia']
 y8= df['Rwanda']
-line1, = ax.plot(x, y1, color='#7f65c4')
-line2, = ax.plot(x, y2, color='#a6b102')
-line3, = ax.plot(x, y3, color='#7241d8')
-line4, = ax.plot(x, y4, color='#9dc4e2')
-line5, = ax.plot(x, y5, color='#73a6f2')
-line6, = ax.plot(x, y6, color='#3526bd')
-line7, = ax.plot(x, y7, color='#912b3d')
-line8, = ax.plot(x, y8, color='#cb2094')
 
+line1, = ax.plot(x, y1, color='#377eb8')
+line2, = ax.plot(x, y2, color='#e41a1c')
+line3, = ax.plot(x, y3, color='#4daf4a')
+line4, = ax.plot(x, y4, color='#984ea3')
+line5, = ax.plot(x, y5, color='#ff7f00')
+line6, = ax.plot(x, y6, color='#666666')
+line7, = ax.plot(x, y7, color='#a65628')
+line8, = ax.plot(x, y8, color='#0c2c84')
+
+                 
+ax.spines['top'].set_color('none')
+ax.spines['right'].set_color('none')
+ax.spines['left'].set_color('#525252')
+ax.spines['bottom'].set_color('#525252')
+         
 ax.set_xticklabels(labels= df['index'].iloc[:], rotation=90, fontsize=8)
-ax.legend(labels=['Ethiopia', 'Kenya', 'Rwanda', 'Somalia', 'Tanzania', 'Uganda',
-       'Burundi', 'South Sudan'], loc='upper left')
+ax.legend(labels=['Ethiopia', 'Kenya', 'Tanzania', 'Uganda', 'Burundi', 'South Sudan',
+       'Somalia', 'Rwanda'], loc='upper left')
 ax.set(xlabel='Dates', ylabel='Code:https://github.com/kriskirimi/Covid2019EA\n\nNo of Confirmed Cases', title='East Africa COVID-19 Confirmed Cases')
-plt.style.use('seaborn-whitegrid')
+plt.style.use('ggplot')
 
+ax.annotate('Source:Johns Hopkins School of Public Health',
+            fontsize=8,xy=(0, 0),xycoords=('axes fraction'), textcoords=('offset points'), 
+            xytext=((00, -48)))
 def animate(i):
     line1.set_data(x[:i],y1[:i])
     line2.set_data(x[:i],y2[:i])
