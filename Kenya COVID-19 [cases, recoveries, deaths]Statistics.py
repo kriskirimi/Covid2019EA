@@ -52,7 +52,7 @@ sns.lineplot(x='Dates', y='Code:https://github.com/kriskirimi/Covid2019EA\n\nNo'
              hue='', data=df, marker='.')
 
 
-plt.savefig(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Kenya Covid19 Statistics.jpeg',
+plt.savefig(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Kenya COVID-19 [cases, recoveries, deaths]Statistics.jpeg',
             format='jpeg', dpi=400)
 
 plt.close()
