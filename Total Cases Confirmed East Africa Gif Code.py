@@ -9,7 +9,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from matplotlib.animation import ImageMagickWriter
-df = pd.read_csv(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Data\time_series_covid19_confirmed_global.csv')
+Raw_Data_Link = 'https://bit.ly/3e8cPnf'
+df = pd.read_csv(Raw_Data_Link)
 df.dtypes
 East_Africa = (['Kenya', 'Tanzania', 'Uganda', 'Rwanda', 'Burundi', 'Ethiopia', 
                 'South Sudan', 'Somalia'])
@@ -70,5 +71,6 @@ def animate(i):
 
 ani = FuncAnimation(fig, animate, frames=len(x), interval=400)
 writer = ImageMagickWriter(fps = 20)
-ani.save(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Covid19.gif', writer='imagemagick')
+ani.save(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\EA Covid19 Confirmed Cases.gif', writer='imagemagick')
 plt.show()
+plt.close()
