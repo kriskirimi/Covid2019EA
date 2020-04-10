@@ -35,7 +35,7 @@ ax.annotate('Source:Johns Hopkins School of Public Health',
             xytext=((00, -48)))
 bbox=dict(boxstyle='round', fc='none', ec='grey')
 
-ax.annotate('Start of curfew\nin Kenya', xycoords='data',xy=('3/27/20',0), 
+ax.annotate('Start of curfew', xycoords='data',xy=('3/27/20',0), 
             xytext=('3/27/20',110), bbox=bbox,
             arrowprops=dict(arrowstyle='-',color='#515050',linestyle='dashed'), fontsize=8,ha='center' )
 
