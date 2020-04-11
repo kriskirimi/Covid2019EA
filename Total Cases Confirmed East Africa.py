@@ -64,27 +64,28 @@ ax.legend(labels=['Kenya', 'Uganda', 'Rwanda','Tanzania', 'Somalia',
                   'South Sudan', 'Ethiopia', 
                   'Burundi'], loc='upper left')
 
-ax.set(xlabel='Dates', ylabel='Code:https://github.com/kriskirimi/Covid2019EA\n\nNo of Confirmed Cases', 
+ax.set(ylabel='No of Confirmed Cases', 
        title='East Africa Countries Confirmed COVID-19 Cases')
 
 bbox=dict(boxstyle='round', fc='none', ec='grey')
 
 ax.annotate('Start of curfew\nin Kenya', xycoords='data',xy=('3/27/20',31), 
-            xytext=('3/26/20',75), bbox=bbox,
-            arrowprops=dict(arrowstyle='->',color='red'), fontsize=8,ha='center' )
+            xytext=('3/27/20',75), bbox=bbox,
+            arrowprops=dict(arrowstyle='->',color='#bf0000'), fontsize=8,ha='center' )
 
 ax.annotate('Start of curfew\nin Uganda', xycoords='data',xy=('3/31/20',44), 
-            xytext=('4/3/20',60),bbox=bbox,
-            arrowprops=dict(arrowstyle='->',color='red'), fontsize=8,ha='center' )
+            xytext=('3/31/20',95),bbox=bbox,
+            arrowprops=dict(arrowstyle='->',color='#bf0000'), fontsize=8,ha='center' )
 
 ax.annotate('Start of curfew\nin Rwanda', xycoords='data',xy=('3/22/20',19), 
             xytext=('3/22/20',60),bbox=bbox,
-            arrowprops=dict(arrowstyle='->',color='red'), fontsize=8,ha='center' )
+            arrowprops=dict(arrowstyle='->',color='#bf0000'), fontsize=8,ha='center' )
 
-ax.annotate('Source:Johns Hopkins School of Public Health',
-            fontsize=8,xy=(0, 0),xycoords=('axes fraction'), textcoords=('offset points'), 
-            xytext=((00, -48)))
-plt.show()
+ax.annotate('Source:Johns Hopkins School of Public Health\nCode:https://github.com/kriskirimi/Covid2019EA',
+            fontsize=7.5, style='italic',xy=(0, 0),xycoords=('axes fraction'), textcoords=('offset points'), 
+            xytext=((00, -52)))
+
 plt.savefig(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Total Cases Confirmed in East Africa.jpeg',
             format='jpeg', dpi=400)
+plt.show()
 plt.close()
