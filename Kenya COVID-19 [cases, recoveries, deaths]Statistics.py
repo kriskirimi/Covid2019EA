@@ -45,8 +45,8 @@ for i in p[:len(p)]:
 ax.set(title='COVID-19 in Kenya')
 
 ax.annotate('Source:Johns Hopkins School of Public Health\nCode:https://github.com/kriskirimi/Covid2019EA',
-            fontsize=7.5, style='italic',xy=(0, 0),xycoords=('axes fraction'), textcoords=('offset points'), 
-            xytext=((00, -52)))
+            fontsize=7, style='italic',xy=(0, 0),xycoords=('axes fraction'), textcoords=('offset points'), 
+            xytext=((00, -49)))
 
 bbox=dict(boxstyle='round', fc='none', ec='grey')
 
