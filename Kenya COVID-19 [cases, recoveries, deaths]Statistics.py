@@ -41,7 +41,7 @@ p=[df['Confirmed Cases'],df['Recoveries'],df['Deaths']]
 
 for i in p[:len(p)]:
     ax.plot(df['Dates'], i, marker='.')
-    
+  
 ax.set(title='COVID-19 in Kenya')
 
 ax.annotate('Source:Johns Hopkins School of Public Health\nCode:https://github.com/kriskirimi/Covid2019EA',
