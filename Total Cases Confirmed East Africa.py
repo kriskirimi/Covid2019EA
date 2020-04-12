@@ -9,9 +9,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from cycler import cycler
-Raw_Data_Link = 'https://bit.ly/3e8cPnf'
-df = pd.read_csv(Raw_Data_Link)
-df.dtypes
+df = pd.read_csv('https://bit.ly/3e8cPnf')
 East_Africa = (['Kenya', 'Tanzania', 'Uganda', 'Rwanda', 'Burundi', 'Ethiopia', 
                 'South Sudan', 'Somalia'])
 df = df[df['Country/Region'].str.contains(format('|'.join(East_Africa)))]
@@ -19,9 +17,7 @@ df.drop(['Province/State', 'Lat', 'Long'], axis=1, inplace=True)
 df.set_index('Country/Region', inplace=True, drop=True)
 df = df.T
 df=df.loc[(df.sum(axis=1)!=0)]
-len(df.columns)
-len(df.columns)
-len(df.columns)
+
 df=df.reset_index()
 df=df.rename(columns={'index':'Dates'})
 #curfew_Dates=[KE--3/27/20, RW-3/22/20, UG--3/31/20]
@@ -37,15 +33,6 @@ mpl.rcParams['axes.labelsize'] = 10
 mpl.rcParams['axes.titlesize'] = 15
 
 fig, ax = plt.subplots(figsize=(14,7))
-x = df['Dates']
-y1= df['Kenya']
-y2= df['Uganda']
-y3= df['Rwanda']
-y4= df['Tanzania']
-y5= df['Somalia']
-y6= df['South Sudan']
-y7= df['Ethiopia']
-y8= df['Burundi']
 
 i=[ df['Kenya'], df['Uganda'], df['Rwanda'],df['Tanzania'], 
    df['Somalia'], df['South Sudan'],df['Ethiopia'], df['Burundi']]

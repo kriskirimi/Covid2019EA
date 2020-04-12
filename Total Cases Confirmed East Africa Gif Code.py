@@ -9,9 +9,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from matplotlib.animation import ImageMagickWriter
-Raw_Data_Link = 'https://bit.ly/3e8cPnf'
-df = pd.read_csv(Raw_Data_Link)
-df.dtypes
+df = pd.read_csv('https://bit.ly/3e8cPnf')
+
 East_Africa = (['Kenya', 'Tanzania', 'Uganda', 'Rwanda', 'Burundi', 'Ethiopia', 
                 'South Sudan', 'Somalia'])
 df = df[df['Country/Region'].str.contains(format('|'.join(East_Africa)))]
@@ -23,7 +22,7 @@ df.set_index('Country/Region', inplace=True, drop=True)
 df = df.T
 df=df.loc[(df.sum(axis=1)!=0)]
 df.reset_index(inplace=True)
-fig, ax = plt.subplots(figsize=(11,7))
+fig, ax = plt.subplots(figsize=(12,7))
 x = df['index']
 y1= df['Ethiopia']
 y2= df['Kenya']
@@ -52,12 +51,12 @@ ax.spines['bottom'].set_color('#525252')
 ax.set_xticklabels(labels= df['index'].iloc[:], rotation=90, fontsize=8)
 ax.legend(labels=['Ethiopia', 'Kenya', 'Tanzania', 'Uganda', 'Burundi', 'South Sudan',
        'Somalia', 'Rwanda'], loc='upper left')
-ax.set(xlabel='Dates', ylabel='Code:https://github.com/kriskirimi/Covid2019EA\n\nNo of Confirmed Cases', title='East Africa COVID-19 Confirmed Cases')
+ax.set(title='East Africa COVID-19 Confirmed Cases')
 plt.style.use('ggplot')
 
-ax.annotate('Source:Johns Hopkins School of Public Health',
-            fontsize=8,xy=(0, 0),xycoords=('axes fraction'), textcoords=('offset points'), 
-            xytext=((00, -48)))
+ax.annotate('Source:Johns Hopkins School of Public Health\nCode:https://github.com/kriskirimi/Covid2019EA',
+            fontsize=7.5, color='#6b6a6a',style='italic',xy=(0, 0),xycoords=('axes fraction'), textcoords=('offset points'), 
+            xytext=((00, -52)))
 def animate(i):
     line1.set_data(x[:i],y1[:i])
     line2.set_data(x[:i],y2[:i])
