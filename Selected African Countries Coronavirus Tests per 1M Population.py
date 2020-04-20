@@ -65,9 +65,10 @@ ax.annotate('Code:https://github.com/kriskirimi/Covid2019EA', (0,0), (00,-44), f
              xycoords='axes fraction', textcoords='offset points')
 
 plt.style.use('seaborn')
-plt.show()
-# # plt.savefig(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Total Cases Confirmed in East Africa.jpeg',
-#             format='jpeg', dpi=400)
+# plt.show()
+
+plt.savefig(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Selected African Countries Coronavirus Tests/1M Population.jpeg',
+            format='jpeg', dpi=400)
 
 gdf=gpd.read_file('C:/Users/KIRIMI/Desktop/New folder/countries_Af.geojson')
 
