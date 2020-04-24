@@ -13,7 +13,7 @@ import geopandas as gpd
 import folium
 
 url = 'http://www.worldometers.info/coronavirus/'
-r = requests.options(url)
+r = requests.get(url)
 
 df0=pd.read_html(r.text)
 
@@ -22,24 +22,25 @@ for df in df0:
 
 countries_Af=['Algeria', 'Angola', 
               'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 
-              'Cameroon', 'Canary Islands', 'Cabo Verde', 'Cameroon','CAR', 
+              'Cameroon', 'Cabo Verde', 'Cameroon','CAR', 
               'Chad','Congo','Djibouti','DRC','Egypt','Equatorial Guinea',
               'Eritrea', 'Eswatini','Ethiopia','Gabon','Gambia','Ghana', 
               'Guinea','Guinea-Bissau', 'Ivory Coast','Kenya','Lesotho',
               'Liberia','Libya','Madagascar','Malawi','Mali','Mauritania',
-              'Mayotte','Mauritius', 'Morocco','Mozambique','Namibia','Niger', 
-              'Nigeria','Réunion','Rwanda','Sao Tome and Principe','Senegal', 
+              'Mauritius', 'Morocco','Mozambique','Namibia','Niger', 
+              'Nigeria','Rwanda','Sao Tome and Principe','Senegal', 
               'Seychelles','Sierra Leone','Somalia','South Africa','South Sudan',
               'Sudan','Tanzania','Togo','Tunisia','Uganda',
               'Western Sahara','Zambia', 'Zimbabwe']
 
-df1=df[df['Country,Other'].str.contains('|'.join(countries_Af))]
+df1=df[df['Country,Other'].str.contains(r'^({})$'.format('|'.join(countries_Af)), case=False)]
+                                        
 df1=df1.drop(['NewCases','NewDeaths'], axis=1)
 df2=df1.dropna(subset=['Tests/ 1M pop'])
 df2.sort_values('Tests/ 1M pop', ascending=False, inplace=True)
 df2.reset_index(inplace=True, drop=True)
 
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(14, 6))
 x = np.arange(len(df2['Country,Other'].unique()))
 rect1=ax.barh(x,df2['Tests/ 1M pop'])
 ax.set_yticks(np.arange(len(df2['Country,Other'].unique())))
@@ -58,20 +59,15 @@ for i, b in enumerate(EA):
     if b:
         ax.patches[i].set_facecolor('red')
 
-ax.set(xlabel='Tests/ 1M pop', title='Selected African Countries Coronavirus Tests/1M Population(As of 19th April 2020)')
+ax.set(xlabel='Tests/ 1M pop', title='Selected African Countries Coronavirus Tests/1M Population(As of 23rd April 2020)')
 ax.annotate('Source:https://www.worldometers.info/coronavirus/', (0,0), (00,-35), fontsize=8, 
              xycoords='axes fraction', textcoords='offset points')
 ax.annotate('Code:https://github.com/kriskirimi/Covid2019EA', (0,0), (00,-44), fontsize=8, 
              xycoords='axes fraction', textcoords='offset points')
 
 plt.style.use('seaborn')
-# plt.show()
-
-plt.savefig(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Selected African Countries Coronavirus Tests/1M Population.jpeg',
-            format='jpeg', dpi=400)
 
 gdf=gpd.read_file('C:/Users/KIRIMI/Desktop/New folder/countries_Af.geojson')
-
 
 geoD = 'C:/Users/KIRIMI/Desktop/New folder/countries_Af.geojson'
 
@@ -106,6 +102,12 @@ folium.Choropleth(geo_data = geoD,
 
 folium.LayerControl().add_to(m)
 
-m.save(r'C:\Users\KIRIMI\Desktop\New folder\map.html')
+m.save(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Selected African Countries Coronavirus Tests per 1M Population.html')
 
+plt.show()
+
+plt.savefig(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Selected African Countries Coronavirus Tests per 1M Population.jpeg',
+            format='jpeg', dpi=300)
+
+plt.close()
 
