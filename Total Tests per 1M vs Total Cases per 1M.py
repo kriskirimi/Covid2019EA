@@ -49,7 +49,7 @@ fig, ax = plt.subplots(figsize=(13,6))
 ax = sns.regplot(data=df1, x='Tests/ 1M pop', 
                 y='Total Cases/1M pop',scatter_kws={"s": 70}, robust=True)  
 
-ax.set(xscale='log', yscale='log', title='Correlation Between Tests per 1M Pop and Confirmed Cases Per 1M Pop for Selected African Countries')
+ax.set(xscale='log', yscale='log', title='Correlation Between Tests/1M Pop and Confirmed Cases/1M Pop for Selected African Countries(As of 23rd April 2020)')
     
 for line in range(0, df1.shape[0]):
     ax.annotate(df1['Country,Other'].iloc[line], xy=(df1['Tests/ 1M pop'].iloc[line], df1['Total Cases/1M pop'].iloc[line]), 
@@ -61,5 +61,5 @@ ax.annotate('Source:https://www.worldometers.info/coronavirus/', (0,0), (00,-35)
 ax.annotate('Code:https://github.com/kriskirimi/Covid2019EA', (0,0), (00,-44), fontsize=8, 
              xycoords='axes fraction', textcoords='offset points')
 
-plt.savefig(r'C:\Users\KIRIMI\.spyder-py3\My Projects\Covid 19\Total Tests Per 1M Vs Total Cases Per 1M.jpeg',
+plt.savefig(r'C:\Users\KIRIMI\Documents\GitHub\Covid2019EA\Total Tests per 1M Pop Vs Total Cases per 1M Pop.jpeg',
             format='jpeg', dpi=400)
